@@ -41,52 +41,6 @@ class SilentMoexPriceAlert:
         except Exception:
             return None
 
-
-    # def monitor(self, interval=10):
-    #     """Основной цикл мониторинга цен"""
-    #     self.running = True
-    #     print("Мониторинг цен запущен в тихом режиме")
-    #
-    #     while self.running:
-    #         try:
-    #             for chat_id, user_alerts in self.alerts.items():
-    #                 for ticker in list(user_alerts.keys()):
-    #                     price = self.check_price(ticker)
-    #                     if price is None:
-    #                         continue
-    #
-    #                     for alert in user_alerts[ticker]:
-    #                         if alert['triggered']:
-    #                             continue
-    #
-    #                         condition_met = (
-    #                                 (alert['direction'] == 'long' and price >= alert['price']) or
-    #                                 (alert['direction'] == 'short' and price <= alert['price'])
-    #                         )
-    #
-    #                         if condition_met:
-    #                             alert['triggered'] = True
-    #                             direction = "выше" if alert['direction'] == 'long' else "ниже"
-    #                             message = (
-    #                                 f"🔔 АЛЕРТ! {ticker} достиг {alert['price']} руб. "
-    #                                 f"(текущая цена {price} руб., движение {direction} уровня)"
-    #                             )
-    #                             print(message)
-    #                             # if self.bot and self.chat_id:
-    #                             #     self._run_in_loop(self._send_telegram_alert(message))
-    #
-    #             time.sleep(interval)
-    #         except Exception as e:
-    #             print(f"Ошибка мониторинга: {e}")
-    #             time.sleep(30)
-
-    # def start_monitoring(self, interval=10):
-    #     """Запускает мониторинг в отдельном потоке"""
-    #     if self.bot and not hasattr(self, 'loop'):
-    #         self.loop = asyncio.new_event_loop()
-    #
-    #     Thread(target=self.monitor, args=(interval,), daemon=True).start()
-
     def stop_monitoring(self):
         """Останавливает мониторинг"""
         self.running = False
