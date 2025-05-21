@@ -1,0 +1,7 @@
+
+
+services:
+  bot:
+    build: .
+    container_name: trade_bot_1.2
+    command: python main.py
